@@ -1,28 +1,7 @@
-package practice2;
-
 import java.sql.*;
 import java.util.Scanner;
-import java.sql.ResultSet;
 
-/**
- * Предметная область:
- * Table books
- * CREATE TABLE IF NOT EXISTS books
- * (ID SERIAL PRIMARY KEY  NOT NULL,
- * book_id         INT     NOT NULL,
- * price           INT     NOT NULL,
- * author_name     TEXT    NOT NULL,
- * FOREIGN  KEY (book_id)
- * REFERENCES names (book_id)
- * );
- * Table titles
- * CREATE TABLE IF NOT EXISTS titles
- * (ID SERIAL PRIMARY KEY NOT NULL,
- * book_id          INT     UNIQUE,
- * book_title       TEXT    UNIQUE
- * );
- */
-public class Main {
+public class DBUtill {
     private static final String url = "jdbc:postgresql://localhost:5432/practic";
     private static final String user = "postgres";
     private static final String password = "Pivo";
@@ -91,7 +70,7 @@ public class Main {
     public static void deleteFromSecondTable(Connection connection, Scanner in) throws SQLException {
         printTable(connection, "books");
         System.out.println("Выберите ключ book_id из первой таблицы, чтобы удалить даннные из второй таблицы:");
-        var book_id = in.next();
+        var user_id = in.next();
 
         System.out.println("Хотите ли вы удалить связанные данные с первой таблицей? н\\д");
         var approval = in.next();
@@ -99,8 +78,8 @@ public class Main {
         if (approval.toLowerCase().equals("н")) {
             return;
         } else {
-            try (var stmt = connection.prepareStatement("delete from titles where book_id=" + book_id)) {
-                var stm = connection.prepareStatement("delete from books where book_id=" + book_id);
+            try (var stmt = connection.prepareStatement("delete from titles where book_id=" + user_id)) {
+                var stm = connection.prepareStatement("delete from books where book_id=" + user_id);
                 stm.execute();
                 System.out.println("Удаление из первой таблицы прошло успешно.");
                 printTable(connection, "books");
@@ -142,56 +121,18 @@ public class Main {
     }
 
     public static void selectNaturalJoin(Connection connection) {
-        String query = "SELECT titles.book_id, books.book_id, books.price, books.author_name, titles.book_title FROM titles LEFT OUTER JOIN books ON titles.book_id=books.book_id;";
+        String query = "select * from books natural join titles;";
         try (Statement stmt = connection.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
-
             while (rs.next()) {
-
                 String book_id = rs.getString("book_id");
                 String price = rs.getString("price");
                 String author_name = rs.getString("author_name");
                 String book_title = rs.getString("book_title");
-
                 System.out.println("book_id=" + book_id + ", price=" + price + ", author_name=" + author_name + ", book_title=" + book_title);
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Connection conn = null;
-        conn = connect();
-
-        while (true) {
-            System.out.println("Выберите номер задания: 1, 2, 3, 4, 5");
-            var command = new Scanner(System.in).next();
-            try {
-                switch (command) {
-                    case "1":
-                        selectNaturalJoin(conn);
-                        continue;
-                    case "2":
-                        System.out.println("Введите book_id: ");
-                        var book_id = new Scanner(System.in).next();
-                        System.out.println("Введите book_title: ");
-                        var book_title = new Scanner(System.in).next();
-                        insertSecondTable(conn, book_id, book_title);
-                        continue;
-                    case "3":
-                        insertInFirstTable(conn, new Scanner(System.in));
-                        continue;
-                    case "4":
-                        deleteFromSecondTable(conn, new Scanner(System.in));
-                        continue;
-                    case "5":
-                        deleteFromFirstTable(conn);
-                }
-            } catch (Exception e) {
-                System.out.println(e);
-            }
         }
     }
 }
