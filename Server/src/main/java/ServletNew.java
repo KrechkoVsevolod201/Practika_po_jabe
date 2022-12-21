@@ -12,6 +12,11 @@ import java.sql.Statement;
 
 @WebServlet("/main")
 public class ServletNew extends HttpServlet {
+    static String tableString = "<table><tr><th>id</th><th>book_id</th><th>author_name</th><th>book_title</th><th>price</th></tr>";
+    static String td = "<td>";
+    static String std = "</td>";
+    static String tr = "<tr>";
+    static String str = "</tr>";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try (PrintWriter out = resp.getWriter()) {
@@ -24,18 +29,15 @@ public class ServletNew extends HttpServlet {
         }
     }
 
+
     public void createTable(ResultSet set, PrintWriter out) throws SQLException {
         out.println("<HTML><BODY>");
         if (set.next()) {
-            out.print("<table><tr><th>id</th><th>book_id</th><th>author_name</th><th>book_title</th><th>price</th></tr>");
+            out.print(tableString);
             do {
-                out.print("<tr>");
-                out.print("<td>" + set.getObject("id") + "</td>");
-                out.print("<td>" + set.getObject("book_id") + "</td>");
-                out.print("<td>" + set.getObject("author_name") + "</td>");
-                out.print("<td>" + set.getObject("book_title") + "</td>");
-                out.print("<td>" + set.getObject("price") + "</td>");
-                out.print("</tr>");
+                out.print(tr);
+                out.print(td + set.getObject("id") + std + td + set.getObject("book_id") + std + td + set.getObject("author_name") + std + td + set.getObject("book_title") + std + td + set.getObject("price") + std);
+                out.print(str);
             } while (set.next());
             out.print("</table>");
         }
