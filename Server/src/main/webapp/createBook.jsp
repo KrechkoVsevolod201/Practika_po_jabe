@@ -23,7 +23,7 @@
         <span>author_name: </span>
         <input type="text" name="author_name"/><br><br>
     </label>
-    <input type="submit" value="Create!" />
+    <input style="font-size: 25px;" type="submit" value="Create!" />
 </div>
 </body>
 </html>

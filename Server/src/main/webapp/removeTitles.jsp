@@ -11,7 +11,7 @@
           <span>Book_id: </span>
           <input type="number" name="book_id"/><br><br>
     </label>
-    <input style="color:Tomato;" type="submit" value="Remove!" />
+    <input style="color:Tomato; font-size: 25px;" type="submit" value="Remove!" />
 </div>
 </body>
 </html>

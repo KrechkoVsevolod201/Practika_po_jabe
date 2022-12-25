@@ -12,11 +12,16 @@ import java.sql.Statement;
 
 @WebServlet("/main")
 public class ServletNew extends HttpServlet {
-    static String tableString = "<table style=\"border:5px solid Violet;\"><tr><th style=\"border:2px solid Violet;\">id</th><th style=\"border:2px solid Violet;\">book_id</th><th style=\"border:2px solid Violet;\">author_name</th><th style=\"border:2px solid Violet;\">book_title</th><th style=\"border:2px solid Violet;\">price</th></tr>";
-    static String td = "<td style=\"border:2px solid Violet;\">";
+    static String tableString = "<table style=\"border:5px solid Violet; font-size: 25px;\"><tr>" +
+            "<th style=\"border:2px solid Violet; font-size: 25px;\">id</th>" +
+            "<th style=\"border:2px solid Violet; font-size: 25px;\">book_id</th>" +
+            "<th style=\"border:2px solid Violet; font-size: 25px;\">author_name</th>" +
+            "<th style=\"border:2px solid Violet; font-size: 25px;\">book_title</th>" +
+            "<th style=\"border:2px solid Violet; font-size: 25px;\">price</th></tr>";
+    static String td = "<td style=\"border:2px solid Violet; font-size: 25px;\">";
     static String std = "</td>";
-    static String tr = "<tr style=\"border:2px solid Violet;\">";
-    static String str = "</tr style=\"border:2px solid Violet;\">";
+    static String tr = "<tr style=\"border:2px solid Violet; font-size: 25px;\">";
+    static String str = "</tr\">";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try (PrintWriter out = resp.getWriter()) {
@@ -31,7 +36,7 @@ public class ServletNew extends HttpServlet {
 
 
     public void createTable(ResultSet set, PrintWriter out) throws SQLException {
-        out.println("<HTML><BODY>");
+        out.println("<HTML><BODY><div style=\"font-size: 25px; text-align: center; padding: 30px; margin: 50px; border: 5px solid pink; border-radius: 5px; display: flex; flex-direction: column;\">");
         if (set.next()) {
             out.print(tableString);
             do {
@@ -41,6 +46,6 @@ public class ServletNew extends HttpServlet {
             } while (set.next());
             out.print("</table>");
         }
-        out.println("</BODY></HTML>");
+        out.println("</div></BODY></HTML>");
     }
 }

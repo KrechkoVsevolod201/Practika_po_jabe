@@ -11,7 +11,7 @@
         <span>ID from Books: </span>
         <input type="number" name="id"/><br><br>
     </label>
-    <input style="color:Tomato;" type="submit" value="Remove!" />
+    <input style="font-size: 25px;" style="color:Tomato;" type="submit" value="Remove!" />
 </div>
 </body>
 </html>

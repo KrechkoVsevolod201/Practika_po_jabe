@@ -16,7 +16,7 @@
         <span>Book_title: </span>
         <input type="text" name="book_title"/><br><br>
     </label>
-    <input type="submit" value="Create!" />
+    <input style="font-size: 25px;" type="submit" value="Create!" />
 </div>
 </body>
 </html>

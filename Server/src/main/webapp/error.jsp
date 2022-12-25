@@ -12,10 +12,9 @@
 </head>
 <form>
 <body>
-<div style="font-size: 20px; text-align: center; padding: 30px; margin: 50px; border: 5px solid pink; border-radius: 5px; display: flex; flex-direction: column; justify-content: center;">
-<h2> Attention! </h2>
+<div style="font-size: 20px; text-align: center; padding: 30px; margin: 50px; border: 5px solid tomato; border-radius: 5px; display: flex; flex-direction: column; justify-content: center;">
+<h2 style="color:Tomato;"> Attention! </h2>
 <p>Message: <%= message %></p>
-<h2> Thank you for your attention! </h2>
 </div>
 </form>
 </body>
