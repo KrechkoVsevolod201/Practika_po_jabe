@@ -6,6 +6,7 @@ public enum CommandType {
     CREATE_BOOKS,
     DELETE_TITLES,
     DELETE_BOOKS,
+    SELECT_BOOKS,
     EXIT,
     UNDEFINED
 }

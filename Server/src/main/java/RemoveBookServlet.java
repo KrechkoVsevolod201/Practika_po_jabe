@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static prog.utils.BooksRemove.removeTextBook;
+import static prog.utils.BooksRemove.removeBook;
 
 @WebServlet("/removebook")
 public class RemoveBookServlet extends HttpServlet {
@@ -18,7 +18,7 @@ public class RemoveBookServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String id = request.getParameter("id");
         try {
-            int i = removeTextBook("remove " + id);
+            int i = removeBook("remove " + id);
             if (i != 1) {
                 throw new RuntimeException("Check the correctness of the books ID");
             }
