@@ -12,11 +12,11 @@ import java.sql.Statement;
 
 @WebServlet("/main")
 public class ServletNew extends HttpServlet {
-    static String tableString = "<table><tr><th>id</th><th>book_id</th><th>author_name</th><th>book_title</th><th>price</th></tr>";
-    static String td = "<td>";
+    static String tableString = "<table style=\"border:5px solid Violet;\"><tr><th style=\"border:2px solid Violet;\">id</th><th style=\"border:2px solid Violet;\">book_id</th><th style=\"border:2px solid Violet;\">author_name</th><th style=\"border:2px solid Violet;\">book_title</th><th style=\"border:2px solid Violet;\">price</th></tr>";
+    static String td = "<td style=\"border:2px solid Violet;\">";
     static String std = "</td>";
-    static String tr = "<tr>";
-    static String str = "</tr>";
+    static String tr = "<tr style=\"border:2px solid Violet;\">";
+    static String str = "</tr style=\"border:2px solid Violet;\">";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try (PrintWriter out = resp.getWriter()) {
