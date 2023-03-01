@@ -8,7 +8,8 @@
     <input style="font-size: 25px;" type="submit" value="Delete Book_Title" onClick='location.href="http://localhost:8091/removetitle"'/>
     <input style="font-size: 25px;" type="submit" value="Create Book" onClick='location.href="http://localhost:8091/createbook"'/>
     <input style="font-size: 25px;" type="submit" value="Delete Book" onClick='location.href="http://localhost:8091/removebook"'/>
-    <input style="font-size: 25px;" type="submit" value="Search Book" onClick='location.href="http://localhost:8091/searchbook"'/>
+    <input style="font-size: 25px;" type="submit" value="Search Second" onClick='location.href="http://localhost:8091/findSecond"'/>
+    <input style="font-size: 25px;" type="submit" value="Search First" onClick='location.href="http://localhost:8091/findFirst"'/>
 </div>
     <img src="images/mini.png" />
 </body>

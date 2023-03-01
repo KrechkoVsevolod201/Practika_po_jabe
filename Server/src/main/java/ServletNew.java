@@ -22,6 +22,7 @@ public class ServletNew extends HttpServlet {
     static String std = "</td>";
     static String tr = "<tr style=\"border:2px solid Violet; font-size: 25px;\">";
     static String str = "</tr\">";
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try (PrintWriter out = resp.getWriter()) {
